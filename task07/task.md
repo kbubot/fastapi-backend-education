@@ -1,6 +1,5 @@
 # Task7
 
-- 2020\-08\-17 (TUE)
 - 주제: 크롤링 마지막
 
 ## 배우는 내용
@@ -18,7 +17,7 @@
 
 `get_courses` 함수를 구현하세요. 더 나은 방향으로 함수의 구조를 변경해도 괜찮습니다.
 
-이번 태스크로 크롤링 학습은 마칩니다. 다음 태스크부터는 aiohttp를 활용해 서버를 개발합니다.
+이번 태스크로 크롤링 학습은 마칩니다. 다음 태스크부터는 FastAPI를 활용해 서버를 개발합니다.
 
 ```python
 from typing import Dict, List, Optional
@@ -33,7 +32,8 @@ class SemesterData:
 
 
 async def get_courses(semester: Optional[SemesterData] = None) -> Dict[str, List[str]]:
-    """ 선택한 학기의 수강 강좌 데이터를 가져옵니다
+    """
+    선택한 학기의 수강 강좌 데이터를 가져옵니다
 
     :param semester: 선택할 학기 정보, None 이면 수강 강좌 페이지에서 default로 선택된 학기
     :return: 수강 강좌 데이터

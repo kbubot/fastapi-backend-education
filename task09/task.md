@@ -1,12 +1,28 @@
 # Task9
-- 주제: fastAPI 추가 학습
+
+- 주제: FastAPI 서버에 스크래퍼 API 접목
 
 ## 배우는 내용
 
-- fastAPI [참고링크](https://www.youtube.com/watch?v=7t2alSnE2-I&ab_channel=Bitfumes)
+- Path Parameters¶
 
-## 태스크
+## 사전 요구사항
 
-- 위 참고링크를 따라하면서, 문법적/이론적으로 부족한 부분을 추가적으로 학습하세요.
-- fastAPI를 이용하여, 로그인 시스템을 구현해보세요.
-- 본격적으로 서버 개발을 하기 앞서, 쿠키, 헤더, 데코레이터, 비동기 등등 본인이 어려웠던 부분을 정리합니다.
+- `FastAPI`
+
+## 테스크
+
+> **참고** https://fastapi.tiangolo.com/tutorial/path-params/
+
+- task07에서 만든 API를 이용하여, 서버에서 사용하는 API처럼 구동되도록 만드세요.
+
+```python
+from fastapi import FastAPI
+
+app = fastAPI()
+
+@app.get("/courses/{semester}")
+async def get_courses(semester: int):
+    ...
+    #return response
+```

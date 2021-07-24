@@ -1,32 +1,31 @@
 # Task8
--주제: FastAPI 작업 환경 준비 및 사용해보기
+
+- 주제: FastAPI 서버 맛보기
 
 ## 배우는 내용
-1. FastAPI가 무엇인지 배운다.
-2. FastAPI docs를 사용해본다.
+
+- FastAPI first step
+- Query Parameters
 
 ## 사전 요구사항
-- 'fastAPI'
-- 'uvicorn'
 
-참고) https://soyoung-new-challenge.tistory.com/81
+- `FastAPI`
 
-## 테스크
-- 'https://fastapi.tiangolo.com/ko/'
-- 'https://soyoung-new-challenge.tistory.com/81'
-위 문서를 참조하여, fastAPI를 익히고
+## 태스크
 
-task07에서 만든 API를 이용하여, fastAPI에서 구동되도록 만드세요. 
+> **참고** https://fastapi.tiangolo.com/tutorial/first-steps/
 
-```python
-...
-from fastapi import FastAPI
+> **참고** https://fastapi.tiangolo.com/tutorial/query-params/
 
-app = fastAPI()
+위 문서를 읽고, 쭉 따라해보세요.
 
-@app.get("/courses/{semester}")
-async def get_courses(semester: int):
-    ...
-    #return response
-```
+그 이후에 다음 태스크를 수행하세요.
 
+덧셈을 수행하는 API 를 생성합니다.
+경로는 `sum` 이고, 입력은 쿼리스트링으로 받습니다.
+
+- `/sum?a=1&b=2` : 3 이라는 적힌 문서를 반환
+- `/sum?a=1&b=2&c=3` : 6 이라는 적힌 문서를 반환
+- `/sum` : 입력이 필요하다는 텍스트 반환
+
+로컬호스트에서 동작시키면 됩니다.

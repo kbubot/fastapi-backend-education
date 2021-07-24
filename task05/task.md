@@ -1,6 +1,5 @@
 # Task5
 
-- 2020\-08\-07 (Fri)
 - 주제: 크롤링
 
 ## 배우는 내용
@@ -35,7 +34,7 @@ def get_konkuk_movie_info(date: str) -> Dict[str, List[List[str]]]:
 **반환 예시:**
 
 ```python
->>> get_konkuk_movie_info("2020-08-08")
+>>> get_konkuk_movie_info("2021-07-31")
 {'다만 악에서 구하소서': [['09:10', '11:08'],
   ['09:40', '11:38'],
   ['10:00', '11:58'],
