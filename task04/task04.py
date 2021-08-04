@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 from typing import List
+import unicodedata
 
 
 def get_notice_articles(page_num: int) -> List[List[str]]:
@@ -14,11 +15,16 @@ def get_notice_articles(page_num: int) -> List[List[str]]:
     days = soup.select('li > span.reg_date')
     num = 0
     while num < 20:
-        info.append(["https://www.bible.ac.kr/"+links[num]['href'], titles[num].text, names[num+1].text, days[num+1].text])
+        link = "https://www.bible.ac.kr/" + links[num]['href']
+        title = titles[num].text
+        name = names[num + 1].text
+        day = days[num + 1].text
+        info.append([link, title, name, day])
         contents = requests.get(info[num][0])
         copy = BeautifulSoup(contents.content, 'html.parser')
         main_text = copy.select_one('head > meta[name="description"]')['content']
-        info[num].append(main_text.strip())
+        main_text = unicodedata.normalize("NFKD", main_text)
+        info[num].append(main_text)
         num += 1
     return info
 
