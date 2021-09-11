@@ -7,13 +7,13 @@ import asyncio
 
 @dataclass
 class SemesterData:
-    year: int
-    semester: int
+    year: '2021'
+    semester: '20'
 
 
 FORM_DATA = {
-    'username': "",
-    'password': ""
+    'username': '',
+    'password': ''
 }
 
 
@@ -23,21 +23,20 @@ async def get_courses(semester: Optional[SemesterData] = None) -> Dict[str, List
 
         async with aiohttp.ClientSession() as session:
             await session.post(login_url, data=FORM_DATA) #f12-> Networt -> login_url -> Form Data에서 찾을 대로 로그인 양식 보내기
-
             if semester is None:
-                choice_url = f"https://lms.bible.ac.kr/local/ubion/user/"  #로그인 후 semester에 맞는 대로 url이동
+                choice_url = f"https://lms.bible.ac.kr/local/ubion/user/"  # 로그인 후 semester에 맞는 대로 url이동
             else:
                 choice_url = f"https://lms.bible.ac.kr/local/ubion/user/?year={semester.year}&semester={semester.semester}"
 
             req = await session.get(choice_url)  #url에서 정보 얻기
-            html = await req.text
+            html = await req.text()
         soup = BeautifulSoup(html, 'html.parser')
-        lists = soup.select('tbody.my-course-lists > tr')
+        lists = soup.select('.my-course-lists > tr')
 
         information = {}
         for list in lists:
             title = list.select_one('.coursefullname').text
-            tutor = list.select_one('td')[2].text
+            tutor = list.select('td')[2].text
             number = list.select('td')[3].text
             information[title] = [tutor, number]
         return information #정보 리턴
@@ -49,5 +48,5 @@ async def main():
     print("default")
     print(await get_courses())
     print("-" * 30)
-    print(await get_courses(SemesterData(2021, 10)))  # 2020학년도 1학기 데이터 조회
+    print(await get_courses(SemesterData(2021, 10)))  # 2021학년도 1학기 데이터 조회
 asyncio.run(main())
