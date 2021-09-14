@@ -1,16 +1,19 @@
-from typing import Dict
-from typing import List
-from typing import Optional
+# 즉, 제일 상단에는 표준라이브러리
+from typing import Dict, List, Optional
 from dataclasses import dataclass
+import asyncio
+
+# 그다음 서드파티 모듈
 from bs4 import BeautifulSoup
 import aiohttp
-import asyncio
+
+# 마지막으로 사용자정의 모듈
 
 
 @dataclass
 class SemesterData:
-    year: ''
-    semester: ''
+    year: int
+    semester: int
 
 
 FORM_DATA = {
